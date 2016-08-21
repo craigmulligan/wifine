@@ -1,5 +1,6 @@
 # Simple network monitor for osx/linux
 
+This is a **work in progress**.
 Pass an interval and threshold config object and listen for events.
 
 ### Events:

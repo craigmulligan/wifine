@@ -34,7 +34,7 @@ export default class Wifine extends EventEmitter {
   _monitor (results) {
     _.forOwn(results, (value, key) => {
       if (value > this.thresholdConfig[key])
-        this.emit('breech', { test: { [key]: value }, threshold: { [key]: this.thresholdConfig[key] }})
+        this.emit('breach', { test: { [key]: value }, threshold: { [key]: this.thresholdConfig[key] }})
     })
   }
 }

@@ -1,0 +1,34 @@
+{
+  "signal": {
+    "value":-66,
+    "operator": ">"
+  },
+  "noise":{
+    "value": -99,
+    "operator": ">"
+  },
+  "rate": {
+    "value": 20,
+    "operator": ">"
+  },
+  "snr": {
+    "value": 33,
+    "operator": ">"
+  },
+  "quality": {
+    "value": 70,
+    "operator": ">"
+  },
+  "packetLoss": {
+    "value": 0,
+    "operator": ">"
+  },
+  "download": {
+    "value": 4,
+    "operator": ">"
+  },
+  "upload": {
+    "value": 1,
+    "operator": ">"
+  }
+}

@@ -1,1 +1,7 @@
- ☐ init package.json
+ - [x] Add operator variable for config options
+ - [ ] Default `thresholds.json`
+ - [ ] Add local dns test
+ - [ ] Add ability to log results to file
+ - [ ] Add ability to choose tests
+ - [ ] Unit tests
+ - [ ] Publish to npm

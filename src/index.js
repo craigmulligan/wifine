@@ -3,7 +3,7 @@ import EventEmitter from 'events'
 import _ from 'lodash'
 import Promise from 'bluebird'
 import ping from 'ping'
-
+import compareFactory from 'compare-values'
 import { getStrength, getSpeed, getPacketLoss } from './utils/networkTests'
 
 export default class Wifine extends EventEmitter {
@@ -23,7 +23,7 @@ export default class Wifine extends EventEmitter {
         (strength, packetLoss, speed) => {
           let results = _.merge(strength, packetLoss, speed)
           this.emit("data", results)
-          this._monitor(results)
+          this._compare(results)
         }
       ).catch((err) => {
         this.emit('error', err)
@@ -31,10 +31,16 @@ export default class Wifine extends EventEmitter {
     }, this.interval)
   }
 
-  _monitor (results) {
-    _.forOwn(results, (value, key) => {
-      if (value > this.thresholdConfig[key])
-        this.emit('breach', { test: { [key]: value }, threshold: { [key]: this.thresholdConfig[key] }})
+  _compare (results) {
+    _.forOwn(results, (testValue, key) => {
+      let threshold = this.thresholdConfig[key]
+      if (!_.isUndefined(threshold)) {
+        let breach = compareFactory(threshold.operator)
+        if (breach(testValue, threshold.value)) {
+          this.emit('breach', { test: { [key]: testValue },
+          threshold: { [key]: threshold }})
+        }
+      }
     })
   }
 }

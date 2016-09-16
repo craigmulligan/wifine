@@ -3,7 +3,7 @@ import Promise from 'bluebird'
 import ping from 'ping'
 import speedTest from'speedtest-net'
 
-Promise.promisify(sith);
+Promise.promisify(sith)
 
 function getStrength() {
   return sith()
@@ -25,10 +25,12 @@ function getSpeed() {
 
 function getPacketLoss() {
   // TODO PR to ping module to parse res.output to json
-  return ping.promise.probe('google.com').then((res) => {
-       return new Promise((resolve, reject) => {
-        resolve({ packetLoss: parseFloat(res.output.match(/\d+\.+\d+%/img)[0].slice(0, -1))})
-      })
+  return new Promise((resolve, reject) => {
+    return ping.promise.probe('google.com').then((res) => {
+      resolve({ packetLoss: parseFloat(res.output.match(/\d+\.+\d+%/img)[0].slice(0, -1))})
+    }).catch((err) => {
+      reject(err)
+    })
   })
 }
 

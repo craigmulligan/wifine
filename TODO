@@ -1,7 +1,6 @@
  - [x] Add operator variable for config options
- - [ ] Default `thresholds.json`
- - [ ] Add local dns test
- - [ ] Add ability to log results to file
+ - [X] Default `thresholds.json`
+ - [X] Add ability to log results to file
  - [ ] Add ability to choose tests
  - [ ] Unit tests
- - [ ] Publish to npm
+ - [ ] Publish

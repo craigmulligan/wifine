@@ -43,7 +43,7 @@ To set threshold values pass an object to the Wifine constructor with key, value
 Logging is configured by passing a config object to the constructor.
 eg: `{ on: true, level: 'silly' }`
 
-Logs will be written to: `.wifine/wifine.log`
+Logs will be written to current directory `./wifine.log`
 
 ### Example
 
